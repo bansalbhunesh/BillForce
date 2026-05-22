@@ -1,5 +1,4 @@
-import React from 'react';
-import { Document, Page, Text, View, StyleSheet, Font } from '@react-pdf/renderer';
+import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
 // Register fonts for React-PDF if needed, but for simplicity, we use standard PDF fonts here or a generic font.
 
@@ -64,6 +63,8 @@ const styles = StyleSheet.create({
   },
 });
 
+import { NoticeData } from '@/types/invoice';
+
 export const NoticePDF = ({
   buyerName,
   invoiceNumber,
@@ -73,7 +74,7 @@ export const NoticePDF = ({
   daysOverdue,
   taxDisallowance,
   interestAccrued,
-}: any) => {
+}: NoticeData) => {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -92,10 +93,11 @@ export const NoticePDF = ({
             <Text style={styles.bold}>₹{invoiceAmount.toLocaleString('en-IN')}</Text>.
           </Text>
           <Text style={{ marginTop: 10 }}>
-            As a registered MSME under Udyam Registration <Text style={styles.bold}>{udyamNumber}</Text>, the
-            undersigned is protected under the MSMED Act, 2006. Under Section 43B(h) of the Income Tax Act, 1961, any
-            unpaid MSME dues beyond 45 days become <Text style={styles.bold}>non-deductible</Text> for the payer in the
-            relevant financial year.
+            As a registered MSME under Udyam Registration{' '}
+            <Text style={styles.bold}>{udyamNumber}</Text>, the undersigned is protected under the
+            MSMED Act, 2006. Under Section 43B(h) of the Income Tax Act, 1961, any unpaid MSME dues
+            beyond 45 days become <Text style={styles.bold}>non-deductible</Text> for the payer in
+            the relevant financial year.
           </Text>
         </View>
 
@@ -110,17 +112,21 @@ export const NoticePDF = ({
           </View>
           <View style={styles.amountItem}>
             <Text style={styles.amountLabel}>Tax disallowance at 30%</Text>
-            <Text style={styles.amountValue}>₹{Math.round(taxDisallowance).toLocaleString('en-IN')}</Text>
+            <Text style={styles.amountValue}>
+              ₹{Math.round(taxDisallowance).toLocaleString('en-IN')}
+            </Text>
           </View>
           <View style={styles.amountItem}>
             <Text style={styles.amountLabel}>Interest accrued</Text>
-            <Text style={styles.amountValue}>₹{Math.round(interestAccrued).toLocaleString('en-IN')}</Text>
+            <Text style={styles.amountValue}>
+              ₹{Math.round(interestAccrued).toLocaleString('en-IN')}
+            </Text>
           </View>
         </View>
 
         <Text style={{ fontSize: 11, marginTop: 10 }}>
-          Payment is requested immediately to avoid further tax implications. This notice is generated under the
-          provisions of Section 43B(h) and may be referenced in Form 3CD filing.
+          Payment is requested immediately to avoid further tax implications. This notice is
+          generated under the provisions of Section 43B(h) and may be referenced in Form 3CD filing.
         </Text>
 
         <View style={styles.footer}>

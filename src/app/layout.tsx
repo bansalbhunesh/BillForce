@@ -1,28 +1,28 @@
-import type { Metadata } from "next";
-import { Instrument_Serif, DM_Sans, DM_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Instrument_Serif, DM_Sans, DM_Mono } from 'next/font/google';
+import './globals.css';
 
 const instrumentSerif = Instrument_Serif({
-  variable: "--font-serif",
-  weight: "400",
-  subsets: ["latin"],
+  variable: '--font-serif',
+  weight: '400',
+  subsets: ['latin'],
 });
 
 const dmSans = DM_Sans({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
+  variable: '--font-sans',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700'],
 });
 
 const dmMono = DM_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
+  variable: '--font-mono',
+  subsets: ['latin'],
+  weight: ['400', '500'],
 });
 
 export const metadata: Metadata = {
-  title: "BillForce — Section 43B(h) MSME Payment Notices",
-  description: "Stop chasing payments. Send a notice that actually works.",
+  title: 'BillForce — Section 43B(h) MSME Payment Notices',
+  description: 'Stop chasing payments. Send a notice that actually works.',
 };
 
 export default function RootLayout({
